@@ -14,7 +14,7 @@ with aggr_forecast as (
           row_number() over(partition by forecast_date
               order by count(weather_main) desc) as rn 
   from {{ref('forecast_exploded')}}
-  group by 1, 2, 3, 4, 5
+  {{ dbt_utils.group_by(5) }}
 )
 
 select * from aggr_forecast
