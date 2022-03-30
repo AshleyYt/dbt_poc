@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='incremental',
+        unique_key='customer_id'
+    )
+}}
+
 
 select  c_name as customer_name, 
         c_custkey as customer_id,

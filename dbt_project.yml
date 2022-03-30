@@ -27,7 +27,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 vars:
   promotion_month: '1995-09-01'
-  order_quantity: "300"
+  order_quantity: "315"
 
 
 # Configuring models
@@ -37,10 +37,10 @@ vars:
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  dbt_poc:
+  dbt_weather:
     # Applies to all files under models/example/
     example:
       materialized: view
     format_json:
       materialized: table
-
+  
