@@ -1,5 +1,13 @@
 version: 2
 
+sources:
+  - name: weather
+    database: snowflake_sample_data
+
+    tables:
+      - name: weather_14_total
+      - name: daily_14_total
+
 models:
   - name: forecast_exploded
     description: flatten nested forecast weather into values
@@ -13,9 +21,8 @@ models:
     description: prepare exploded actual view for reporting
     columns:
       - name: city_id
-        description: Primary key
+        description: city_id cannot be null
         tests:
-          - unique
           - not_null
 
   - name: weather_report

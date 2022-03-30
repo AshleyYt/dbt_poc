@@ -11,12 +11,16 @@ limit 10
 {% set res = run_query(get_column_name) %}
 
 {% if execute %}
-{# Return the first column #}
-{% set res_list = res.columns[0].values() %}
+    {% set res_list = res.columns[0].values() %}
 {% else %}
-{% set res_list = [] %}
+    {% set res_list = [] %}
 {% endif %}
 
-{{ return(res_list) }}
+select v,
+{% for column_name in res_list %}
+    {{json_column}}:{{column_name}} as {{column_name}}{% if not loop.last %},{% endif %}
+{% endfor %}
+
+from {{ model_name }}
 
 {% endmacro %}

@@ -15,3 +15,4 @@ on  cs.cs_item_sk = i.i_item_sk and
     cc.cc_call_center_sk= cs.cs_call_center_sk
 where dd.d_year = 2000
 group by 1, 2, 3, 4, 5
+limit 10

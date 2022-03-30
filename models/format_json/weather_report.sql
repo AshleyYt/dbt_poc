@@ -1,3 +1,5 @@
+-- {{ config(alias='{{get_city()}}_weather_report') }}
+
 with
 forecast as
    ( select * from {{ref('forecast_aggregated')}} ),
