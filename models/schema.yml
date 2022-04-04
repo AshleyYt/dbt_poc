@@ -1,0 +1,41 @@
+version: 2
+
+sources:
+  - name: weather
+    database: snowflake_sample_data
+
+    tables:
+      - name: weather_14_total
+      - name: daily_14_total
+
+models:
+  - name: forecast_exploded
+    description: flatten nested forecast weather into values
+    columns:
+      - name: forecast_dt
+        description: the datetime cannot be null
+        tests:
+          - not_null
+
+  - name: actual_aggregated
+    description: prepare exploded actual view for reporting
+    columns:
+      - name: city_id
+        description: city_id cannot be null
+        tests:
+          - not_null
+
+  - name: weather_report
+    description: generate weather report for a particular city
+    columns:
+      - name: report_date
+        tests:
+          - unique
+          - not_null
+      - name: actual_weather_category
+        description: categories only allow following values
+        tests:
+          - accepted_values:
+              values: ['Rain', 'Snow', 'Mist', 'Dust', 'Tornado', 'Drizzle', 
+              'Clear', 'Thunderstorm', 'Haze','Fog', 'Clouds', 'Ash', 'Squall',
+              'Smoke', 'Sand']
