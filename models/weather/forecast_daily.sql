@@ -10,7 +10,8 @@ with aggr_forecast as (
   {{ dbt_utils.group_by(5) }}
 )
 
-select forecast_date, weather_main, weather_description
+select forecast_date, weather_main, weather_description,
+      city, country, forecast_temp
 from aggr_forecast
 where rn = 1
 order by 1

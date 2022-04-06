@@ -1,8 +1,7 @@
 -- {{ config(alias='{{get_city()}}_weather_report') }}
 {{
   config(
-    materialized='view',
-    alias= var('city_name'),
+    alias= 'NY',
   )
 }}
 

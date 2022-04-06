@@ -5,4 +5,4 @@
     json_column = 'v'
   )
 }}
-where city_name = 'New York'
+where city_name = '{{ loop_city()[0] }}'

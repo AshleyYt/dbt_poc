@@ -41,6 +41,8 @@ models:
       +materialized: table
       +schema: weather
 
+seeds:
+  +schema: staging
 
 vars:
-  city_name: "NY"
+  city_name: "'New York'"

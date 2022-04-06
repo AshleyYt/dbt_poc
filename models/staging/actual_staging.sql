@@ -22,4 +22,4 @@ select
         wa.v:wind.deg as deg,
         wa.v:wind.speed as speed
 from {{ source('weather', 'weather_14_total') }} wa
-where wa.v:city.name = 'New York'
+where wa.v:city.name = {{ var('city_name') }}

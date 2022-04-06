@@ -4,7 +4,7 @@ with weather_rn as (
           weather_description,
           row_number() over(partition by actual_date
               order by count(weather_main) desc) as rn 
-  from {{ref('actual_staging')}}
+  from {{ref('actual_staging_using_macro')}}
   group by 1, 2, 3
 ),
 
@@ -12,7 +12,7 @@ temp_avg as (
   select 
           date_trunc('day', to_timestamp(actual_time)) as actual_date,
           round(avg(actual_temp), 2) as actual_temp
-  from {{ref('actual_staging')}}
+  from {{ref('actual_staging_using_macro')}}
   group by 1 )
 
 select  t.actual_date, t.actual_temp, 

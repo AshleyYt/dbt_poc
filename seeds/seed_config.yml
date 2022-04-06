@@ -1,0 +1,14 @@
+version: 2
+
+seeds:
+  - name: city_alias
+    description: mapping alias with city names. The alias are used as prefix for weather report table name
+    docs:
+      show: true
+    config:
+      +schema: staging
+    columns:
+      - name: city
+        description: we run loop for 22 unique citys 
+        tests:
+          - unique
