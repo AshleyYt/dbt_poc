@@ -1,0 +1,4 @@
+
+{% for i in generate_list_from_columns() %}
+    select * from weather_report
+{% endfor %}

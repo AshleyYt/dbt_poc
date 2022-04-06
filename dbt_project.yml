@@ -45,4 +45,4 @@ seeds:
   +schema: staging
 
 vars:
-  city_name: "'New York'"
+  city_name: 'Spring'

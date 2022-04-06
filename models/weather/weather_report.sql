@@ -1,7 +1,7 @@
--- {{ config(alias='{{get_city()}}_weather_report') }}
+
 {{
   config(
-    alias= 'NY',
+    alias= loop_city()[1],
   )
 }}
 

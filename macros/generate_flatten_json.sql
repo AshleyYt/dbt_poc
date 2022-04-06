@@ -9,7 +9,7 @@ f.value as json_value
 from {{ model_name }}, 
 lateral flatten(input => {{ json_column }},
                 recursive => true ) f
-limit 20
+limit 100
 )
 
 select distinct json_path

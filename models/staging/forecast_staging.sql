@@ -28,4 +28,4 @@ select
         to_timestamp(wf.v:time) as forecast_dt
 from {{ source('weather', 'daily_14_total') }} wf,
         lateral flatten(input => wf.v,  path => 'data') f
-where wf.v:city.name =  {{ var('city_name') }}
+where wf.v:city.name =  '{{ loop_city()[0] }}'

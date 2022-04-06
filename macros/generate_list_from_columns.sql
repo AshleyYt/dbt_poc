@@ -1,4 +1,4 @@
-{% macro loop_city() %}
+{% macro generate_list_from_columns() %}
 
 {% set get_city_list %}
 
@@ -16,10 +16,12 @@ from staging.city_alias
     {% set city_alias = [] %}
 {% endif %}
 
-
+{% set running_list = [] %}
 {% for i in range(city_name|length) %}
-    {{ return([city_name[i], city_alias[i]] )}}
+    -- {{ return([city_name[i], city_alias[i]] )}}
+    {% do running_list.append([city_name[i], city_alias[i]]) %}
 {% endfor %}
+{{ return(running_list) }}
 
 
 {% endmacro %}
